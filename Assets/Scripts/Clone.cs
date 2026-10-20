@@ -5,7 +5,7 @@ public class Clone : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private Transform mirror;
     
-    void LateUpdate()
+    void Update()
     {
         if (mirror == null || target == null) return;
         
@@ -18,9 +18,9 @@ public class Clone : MonoBehaviour
         
         Vector3 lPosMirrorBased = lWorldToMirror.MultiplyVector(lPlayerOffsetFromMirror);
 
-        Matrix4x4 lFlipZ = Matrix4x4.identity;
-        lFlipZ.m22 = -1f;
-        Vector3 lFlippedInZMirrorBased = lFlipZ.MultiplyVector(lPosMirrorBased);
+        Matrix4x4 lFlipY = Matrix4x4.identity;
+        lFlipY.m22 = -1f;
+        Vector3 lFlippedInZMirrorBased = lFlipY.MultiplyVector(lPosMirrorBased);
         
         Matrix4x4 lMirrorToWorld = Matrix4x4.identity;
         lMirrorToWorld.SetColumn(0, mirror.right);
